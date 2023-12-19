@@ -1,0 +1,37 @@
+name: Automated Release
+on:
+push:
+branches:
+    -main
+Jobs:
+  release:
+  runs-on:ubantu-latest
+  steps:
+  -name: Checkout code
+  users:actions/checkout@v2
+
+-name: Setup File.js
+uses: action/setup-File@v2
+with:
+  node-version:14 or above
+ -name: Install dependencies
+ run: npm install
+
+ -name: Bump version
+ id: version
+ run: 
+
+ -name: Commit and push version bump
+ run: 
+ git config --local user.email
+ git config --local user.name
+ git add #or the specific versiion file/packge.json
+ git commit -m "massage"
+ 
+ - name: Create release
+ uses:actions/create-relaease@v1
+ with:
+ tag_name:,
+ relaese name: version name
+ draft:false
+ prelease:false
